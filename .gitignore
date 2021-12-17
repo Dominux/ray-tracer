@@ -1,1 +1,5 @@
 /target
+
+# render results
+renders/*
+!renders/README.md
