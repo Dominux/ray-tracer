@@ -34,13 +34,13 @@ impl Vec3 {
         self.2
     }
 
-	pub fn len(&self) -> f64 {
-		self.squared_len().sqrt()
-	}
+    pub fn len(&self) -> f64 {
+        self.squared_len().sqrt()
+    }
 
-	pub fn squared_len(&self) -> f64 {
-		self.0.powi(2) + self.1.powi(2) + self.2.powi(2)
-	}
+    pub fn squared_len(&self) -> f64 {
+        self.0.powi(2) + self.1.powi(2) + self.2.powi(2)
+    }
 
     pub fn make_unit_vector(&mut self) {
         let k = 1.0 / self.len();
@@ -61,9 +61,9 @@ impl Vec3 {
         )
     }
 
-	pub fn unit_vector(self) -> Self {
-		self / self.len()
-	}
+    pub fn unit_vector(self) -> Self {
+        self / self.len()
+    }
 }
 
 impl ops::Add for Vec3 {
@@ -95,6 +95,14 @@ impl ops::Div<f64> for Vec3 {
 
     fn div(self, other: f64) -> Self {
         Vec3(self.0 / other, self.1 / other, self.2 / other)
+    }
+}
+
+impl ops::Mul<Vec3> for f64 {
+    type Output = Vec3;
+
+    fn mul(self, other: Vec3) -> Vec3 {
+        Vec3(self * other.0, self * other.1, self * other.2)
     }
 }
 
@@ -130,8 +138,7 @@ impl ops::MulAssign<f64> for Vec3 {
 
 impl ops::DivAssign<f64> for Vec3 {
     fn div_assign(&mut self, other: f64) {
-		let k = 1.0 / other;
+        let k = 1.0 / other;
         *self = Self(self.0 * k, self.1 * k, self.2 * k);
     }
 }
-
