@@ -2,7 +2,7 @@ use std::ops;
 
 /// Struct to store 3 color channels/directions
 /// and manipulate it as a fully-fledged vector
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq)]
 pub struct Vec3(f64, f64, f64);
 
 impl Vec3 {
